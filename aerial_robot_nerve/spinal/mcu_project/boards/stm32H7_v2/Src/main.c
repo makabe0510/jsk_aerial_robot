@@ -224,7 +224,7 @@ int main(void)
   HAL_NVIC_DisableIRQ(DMA1_Stream2_IRQn); // we do not need DMA Interrupt for USART3 RX, circular mode
 
   /* Flash Memory */
-  FlashMemory::init(0x081E0000, FLASH_SECTOR_7);
+  //FlashMemory::init(0x081E0000, FLASH_SECTOR_7);
   // Bank2, Sector7: 0x081E 0000 (128KB); https://www.stmcu.jp/download/?dlid=51599_jp
   // BANK1 (with Sector7) cuases the flash failure by STLink from the second time. So we use BANK_2, which is tested OK
 
@@ -234,7 +234,7 @@ int main(void)
   // So, we introduce following dummy data for a workaround to avoid the vanishment of stored data in flash memory.
   uint8_t dummy_data[64];
   memset(dummy_data, 1, 64);
-  FlashMemory::addValue(dummy_data, 64);
+  //FlashMemory::addValue(dummy_data, 64);
 
 #if 0 // test flash memory
 
@@ -273,9 +273,9 @@ int main(void)
   //controller_.init(&htim1, &htim4, &estimator_, NULL, &battery_status_, &nh_, &flightControlMutexHandle);
 #endif
 
-  FlashMemory::read(); //IMU calib data (including IMU in neurons)
+  //FlashMemory::read(); //IMU calib data (including IMU in neurons)
 #if SERVO_FLAG
-  servo_.init(&huart2, &nh_, NULL);
+  //servo_.init(&huart2, &nh_, NULL);
 #elif NERVE_COMM
   Spine::init(&hfdcan1, &nh_, &estimator_, LED1_GPIO_Port, LED1_Pin);
   Spine::useRTOS(&canMsgMailHandle); // use RTOS for CAN in spianl
