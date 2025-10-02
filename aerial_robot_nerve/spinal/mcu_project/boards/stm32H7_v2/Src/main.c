@@ -1218,12 +1218,13 @@ void coreTaskFunc(void const * argument)
 #if NERVE_COMM
       Spine::send();
 #endif
+      /*
       imu_.update();
       baro_.update();
       gps_.update();
       estimator_.update();
       controller_.update();
-
+       */
 #if !SERVO_FLAG && NERVE_COMM      
       Spine::update();
 #endif
