@@ -338,24 +338,24 @@ int main(void)
   rosSpinTaskHandle = osThreadCreate(osThread(rosSpinTask), NULL);
 
   /* definition and creation of idleTask */
-  osThreadDef(idleTask, idleTaskFunc, osPriorityIdle, 0, 128);
-  idleTaskHandle = osThreadCreate(osThread(idleTask), NULL);
+  //osThreadDef(idleTask, idleTaskFunc, osPriorityIdle, 0, 128);
+  //idleTaskHandle = osThreadCreate(osThread(idleTask), NULL);
 
   /* definition and creation of rosPublish */
   osThreadDef(rosPublish, rosPublishTask, osPriorityBelowNormal, 0, 128);
   rosPublishHandle = osThreadCreate(osThread(rosPublish), NULL);
 
   /* definition and creation of voltage */
-  osThreadDef(voltage, voltageTask, osPriorityLow, 0, 256);
-  voltageHandle = osThreadCreate(osThread(voltage), NULL);
+  //osThreadDef(voltage, voltageTask, osPriorityLow, 0, 256);
+  //voltageHandle = osThreadCreate(osThread(voltage), NULL);
 
   /* definition and creation of canRx */
-  osThreadDef(canRx, canRxTask, osPriorityRealtime, 0, 256);
-  canRxHandle = osThreadCreate(osThread(canRx), NULL);
+  //osThreadDef(canRx, canRxTask, osPriorityRealtime, 0, 256);
+  //canRxHandle = osThreadCreate(osThread(canRx), NULL);
 
   /* definition and creation of servoTask */
-  osThreadDef(servoTask, ServoTaskCallback, osPriorityRealtime, 0, 256);
-  servoTaskHandle = osThreadCreate(osThread(servoTask), NULL);
+  //osThreadDef(servoTask, ServoTaskCallback, osPriorityRealtime, 0, 256);
+  //servoTaskHandle = osThreadCreate(osThread(servoTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
