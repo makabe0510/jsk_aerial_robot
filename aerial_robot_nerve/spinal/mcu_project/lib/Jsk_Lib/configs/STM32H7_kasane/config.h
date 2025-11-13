@@ -29,7 +29,7 @@
 #define GPIO_L(port, pin) HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET)
 
 //0. Comm Type
-#define NERVE_COMM 1
+#define NERVE_COMM 0
 
 //1. Specials board options
 #define STM32H7_KASANE 1
@@ -47,9 +47,9 @@
 //2.1.3 GPS Sensor
 #define GPS_FLAG 0
 //2.1.3 Direct Servo Control
-#define SERVO_FLAG 0
-#define DYNAMIXEL 1
-#define KONDO 0
+#define SERVO_FLAG 1
+#define DYNAMIXEL 0
+#define KONDO 1
 //2.2 State Estimate
 //2.2.1 Attitude Estimate
 #define ATTITUDE_ESTIMATE_FLAG 1
