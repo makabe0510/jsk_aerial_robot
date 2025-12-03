@@ -26,7 +26,7 @@ def main():
 
     while not rospy.is_shutdown():
         if latest_pose is not None:
-            # 1秒ごとに最新のPoseを読み出して表示
+            # 10秒ごとに最新のPoseを読み出して表示
             p = latest_pose.pose.position
             o = latest_pose.pose.orientation
             rospy.loginfo(
