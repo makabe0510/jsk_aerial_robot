@@ -39,17 +39,14 @@
    <rosparam file="$(arg config_dir)/MotorInfo.yaml" command="load" />
 
    ###########  Servo Config  ###########
-   <!-- <rosparam file="$(arg config_dir)/$(arg airframe)/Servo.yaml" command="load"/> -->
-   <rosparam file="$(arg config_dir)/grape/Servo.yaml" command="load"/>
-
+   <rosparam file="$(arg config_dir)/$(arg airframe)/Servo.yaml" command="load"/>
+   
    ###########  Battery Config  ###########
    <rosparam file="$(arg config_dir)/Battery.yaml" command="load" />
 
    ###########  Control  ###########
    <rosparam file="$(arg config_dir)/$(arg airframe)/GimbalrotorControl.yaml" command="load" unless="$(arg simulation)"/>
    <rosparam file="$(arg config_dir)/$(arg airframe)/GimbalrotorControl_sim.yaml" command="load" if="$(arg simulation)"/>
-   <!-- <rosparam file="$(arg config_dir)/grape/GimbalrotorControl.yaml" command="load" unless="$(arg simulation)"/> -->
-   <!-- <rosparam file="$(arg config_dir)/grape/GimbalrotorControl_sim.yaml" command="load" if="$(arg simulation)"/> -->
 
    ###########  Sensor Fusion  ###########
    <rosparam file="$(arg config_dir)/StateEstimation.yaml" command="load" />

@@ -58,17 +58,24 @@
       xyz="0 0 0"
       rpy="0 3.14 0"/>
 
+    <!-- <xacro:screw_hinge_module_dynamixel -->
+    <!--   prefix="arm_joint5_" -->
+    <!--   parent_link="arm_joint4_dummy_link" -->
+    <!--   xyz="0 0 0" -->
+    <!--   rpy="0 3.14 0"/> -->
+
     <!-- Joint 5: Drive module -->
     <xacro:screw_drive_module_dynamixel
-      prefix="arm_joint5_"
+	prefix="arm_joint5_"
       parent_link="arm_joint4_dummy_link"
       xyz="0 0 0"
       rpy="0 3.14 3.14"/>
-
+    
     <!-- Gripper -->
     <xacro:vial_pick_module
       prefix="arm_gripper_"
       parent_link="arm_joint5_dummy_link"
+      parent_joint="arm_joint5_joint1"
       xyz="0 0 0"
       rpy="0 0 0"/>
 

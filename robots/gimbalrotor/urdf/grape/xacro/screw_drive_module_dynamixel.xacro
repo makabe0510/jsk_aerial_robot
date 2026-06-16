@@ -31,6 +31,10 @@
         <origin xyz="-0.000256062171402636 -1.23464794906739e-10 0.0223133729686151" rpy="0.0 -0.0 0.0"/>
         <mass value="0.00140627867032843"/>
         <inertia ixx="3.69305972647323e-08" ixy="4.70059675645385e-16" ixz="1.36569540430659e-09" iyy="4.37001527382599e-08" iyz="4.21205301040001e-16" izz="6.37416918942377e-08"/>
+	<!-- <mass value="0.00000001"/> -->
+	<!-- <inertia ixx="1e-10" ixy="1e-10" ixz="1e-10" -->
+	<!-- 	 iyy="1e-10" iyz="1e-10" -->
+	<!-- 	 izz="1e-10"/> -->
       </inertial>
       <visual>
         <geometry>
@@ -47,12 +51,17 @@
       <!-- </collision> -->
     </link>
     <link name="${prefix}dummy_link"/>
-    <joint name="${prefix}joint1" type="continuous">
-      <limit effort="0.0" velocity="0.0"/>
+    <joint name="${prefix}joint1" type="revolute">
+      <!-- <joint name="${prefix}joint1" type="continuous"> -->
+      <!-- <limit effort="1.5" velocity="6.39"/> -->
+      <!-- <limit effort="300" velocity="6.39" lower="-3.141592" upper="3.141592"/> -->
+      <limit effort="1.5" velocity="6.39" lower="-3.141592" upper="3.141592"/>
+      <!-- <limit effort="0.0" velocity="0.0"/> -->
       <parent link="${prefix}base_link"/>
       <child link="${prefix}link1"/>
       <axis xyz=" 0.  0. -1."/>
       <origin xyz="0.0 0.0 0.0305" rpy="0.0 -0.0 0.0"/>
+      <dynamics damping="0.000001" friction="0.0000001"/>
     </joint>
     <joint name="${prefix}dummy_joint" type="fixed">
       <limit effort="0.0" velocity="0.0"/>
