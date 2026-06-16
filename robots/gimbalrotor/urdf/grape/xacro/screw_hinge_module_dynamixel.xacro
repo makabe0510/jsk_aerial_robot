@@ -19,12 +19,12 @@
         <material name="${prefix}__unnamed_material_1"/>
         <origin xyz="0.0 0.0 0.0" rpy="1.5707963267949003 -2.99239799605999e-16 -1.5707963267949003"/>
       </visual>
-      <collision>
-        <geometry>
-          <mesh filename="package://${package_name}/urdf/grape/meshes/arm/screw_hinge_module_dynamixel/base_link.stl"/>
-        </geometry>
-        <origin xyz="0.0 0.0 0.0" rpy="1.5707963267949003 -2.99239799605999e-16 -1.5707963267949003"/>
-      </collision>
+      <!-- <collision> -->
+      <!--   <geometry> -->
+      <!--     <mesh filename="package://${package_name}/urdf/grape/meshes/arm/screw_hinge_module_dynamixel/base_link.stl"/> -->
+      <!--   </geometry> -->
+      <!--   <origin xyz="0.0 0.0 0.0" rpy="1.5707963267949003 -2.99239799605999e-16 -1.5707963267949003"/> -->
+      <!-- </collision> -->
     </link>
     <link name="${prefix}link1">
       <inertial>
@@ -39,12 +39,12 @@
         <material name="${prefix}__unnamed_material_2"/>
         <origin xyz="2.09657352239695e-18 -0.035 1.00064680020069e-17" rpy="3.141592653589793 1.570796326794893 3.141592653589793"/>
       </visual>
-      <collision>
-        <geometry>
-          <mesh filename="package://${package_name}/urdf/grape/meshes/arm/screw_hinge_module_dynamixel/link1.stl"/>
-        </geometry>
-        <origin xyz="2.09657352239695e-18 -0.035 1.00064680020069e-17" rpy="3.141592653589793 1.570796326794893 3.141592653589793"/>
-      </collision>
+      <!-- <collision> -->
+      <!--   <geometry> -->
+      <!--     <mesh filename="package://${package_name}/urdf/grape/meshes/arm/screw_hinge_module_dynamixel/link1.stl"/> -->
+      <!--   </geometry> -->
+      <!--   <origin xyz="2.09657352239695e-18 -0.035 1.00064680020069e-17" rpy="3.141592653589793 1.570796326794893 3.141592653589793"/> -->
+      <!-- </collision> -->
     </link>
     <link name="${prefix}dummy_link"/>
     <joint name="${prefix}joint1" type="revolute">

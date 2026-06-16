@@ -2,7 +2,7 @@
 <robot name="gimbalrotor" xmlns:xacro="http://www.ros.org/wiki/xacro">  
 
   <xacro:include filename="$(find gimbalrotor)/urdf/grape/common.xacro"/>
-  <!-- <xacro:include filename="$(find gimbalrotor)/urdf/grape/xacro/arm.xacro"/> -->
+  <xacro:include filename="$(find gimbalrotor)/urdf/grape/xacro/arm.xacro"/>
 
   <!-- <link name="root"> -->
   <!--   <inertial> -->
@@ -302,7 +302,6 @@
     <origin xyz="0.0 0.0 0.0585" rpy="0.0 -0.0 0.0"/>
   </joint>
 
-
   <transmission name="gimbal1_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="gimbal1">
@@ -437,6 +436,6 @@
   </joint>
 
   <!-- Include the arm macro -->
-  <!-- <xacro:arm parent_link="main_body"/> -->
+  <xacro:arm parent_link="main_body"/>
 
 </robot>
