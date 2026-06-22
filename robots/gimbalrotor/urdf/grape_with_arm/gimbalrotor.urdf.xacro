@@ -61,8 +61,16 @@
   <link name="main_body">
     <inertial>
       <origin xyz="-0.0041019 0.0000721 -0.0183334" rpy="0.0 -0.0 0.0"/>
-      <mass value="1.3193189"/>
-      <inertia ixx="0.0150906" ixy="-0.0000095" ixz="-0.0001112" iyy="0.0153469" iyz="-0.0000102" izz="0.0122100"/>
+      <!-- <mass value="1.3193189"/> -->
+      <mass value="2.0421872"/>
+      <!-- <inertia ixx="0.0150906" ixy="-0.0000095" ixz="-0.0001112" iyy="0.0153469" iyz="-0.0000102" izz="0.0122100"/> -->
+      <inertia
+	  ixx="0.0233589"
+	  ixy="-0.0000147"
+	  ixz="-0.0001721"
+	  iyy="0.0237556"
+	  iyz="-0.0000158"
+	  izz="0.0189000"/>
     </inertial>
     <visual>
       <geometry>
@@ -98,7 +106,8 @@
   <link name="thrust1">
     <inertial>
       <origin xyz="-5.83353443328605e-09 6.00431360659234e-10 0.00419839092547531" rpy="0.0 -0.0 0.0"/>
-      <mass value="0.011379798689915"/>
+      <!-- <mass value="0.011379798689915"/> -->
+      <mass value="0.0247"/>
       <inertia ixx="8.74001997923959e-05" ixy="-4.12766506878745e-06" ixz="-1.94275247125274e-13" iyy="6.72594264513234e-07" iyz="8.34517033335333e-15" izz="8.79093348597008e-05"/>
     </inertial>
     <visual>
@@ -128,7 +137,8 @@
   <link name="thrust2">
     <inertial>
       <origin xyz="-2.56972954026935e-09 3.06808817088874e-09 0.00419843813014376" rpy="0.0 -0.0 0.0"/>
-      <mass value="0.0113800668107397"/>
+      <!-- <mass value="0.0113800668107397"/> -->
+      <mass value="0.0247"/>
       <inertia ixx="8.73993574758916e-05" ixy="4.12756893234927e-06" ixz="-1.16071744831874e-13" iyy="6.7258088785491e-07" iyz="1.27017867936525e-13" izz="8.79084828385424e-05"/>
     </inertial>
     <visual>
@@ -158,7 +168,8 @@
   <link name="thrust3">
     <inertial>
       <origin xyz="-5.83425141531535e-09 6.01800406659052e-10 0.00419839092622981" rpy="0.0 -0.0 0.0"/>
-      <mass value="0.0113797986875362"/>
+      <!-- <mass value="0.0113797986875362"/> -->
+      <mass value="0.0247"/>
       <inertia ixx="8.74001997906142e-05" ixy="-4.12766506892759e-06" ixz="-1.9423641282498e-13" iyy="6.72594264594888e-07" iyz="8.63468898765394e-15" izz="8.79093348579925e-05"/>
     </inertial>
     <visual>
@@ -188,7 +199,8 @@
   <link name="thrust4">
     <inertial>
       <origin xyz="-2.5501448175369e-09 3.18832430420899e-09 0.00419843814009516" rpy="0.0 -0.0 0.0"/>
-      <mass value="0.0113800667770834"/>
+      <!-- <mass value="0.0113800667770834"/> -->
+      <mass value="0.0247"/>
       <inertia ixx="8.73993574510469e-05" ixy="4.12756894375054e-06" ixz="-1.15301708553968e-13" iyy="6.7258088604331e-07" iyz="1.31787422616219e-13" izz="8.79084828126607e-05"/>
     </inertial>
     <visual>
@@ -418,22 +430,22 @@
     <color rgba="0.50196078 0.50196078 0.50196078 1.        "/>
   </material>
 
-  <link name="battery">
-    <inertial>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <mass value="1.1"/>
-      <inertia
-          ixx="0.0012" ixy="0.0" ixz="0.0"
-          iyy="0.0012" iyz="0.0"
-          izz="0.0012"/>
-    </inertial>
-  </link>
+  <!-- <link name="battery"> -->
+  <!--   <inertial> -->
+  <!--     <origin xyz="0 0 0" rpy="0 0 0"/> -->
+  <!--     <mass value="1.1"/> -->
+  <!--     <inertia -->
+  <!--         ixx="0.0012" ixy="0.0" ixz="0.0" -->
+  <!--         iyy="0.0012" iyz="0.0" -->
+  <!--         izz="0.0012"/> -->
+  <!--   </inertial> -->
+  <!-- </link> -->
 
-  <joint name="battery_joint" type="fixed">
-    <parent link="main_body"/>
-    <child link="battery"/>
-    <origin xyz="0 0 -0.08" rpy="3.14159 0 0"/>
-  </joint>
+  <!-- <joint name="battery_joint" type="fixed"> -->
+  <!--   <parent link="main_body"/> -->
+  <!--   <child link="battery"/> -->
+  <!--   <origin xyz="0 0 -0.08" rpy="3.14159 0 0"/> -->
+  <!-- </joint> -->
 
   <!-- Include the arm macro -->
   <xacro:arm parent_link="main_body"/>
