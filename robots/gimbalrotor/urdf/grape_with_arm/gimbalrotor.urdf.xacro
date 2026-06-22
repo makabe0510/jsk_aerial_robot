@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <robot name="gimbalrotor" xmlns:xacro="http://www.ros.org/wiki/xacro">  
 
-  <xacro:include filename="$(find gimbalrotor)/urdf/grape/common.xacro"/>
-  <xacro:include filename="$(find gimbalrotor)/urdf/grape/xacro/arm.xacro"/>
+  <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/common.xacro"/>
+  <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/xacro/arm.xacro"/>
 
   <!-- <link name="root"> -->
   <!--   <inertial> -->
