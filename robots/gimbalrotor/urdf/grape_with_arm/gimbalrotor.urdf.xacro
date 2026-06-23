@@ -60,9 +60,11 @@
 
   <link name="main_body">
     <inertial>
-      <origin xyz="-0.0041019 0.0000721 -0.0183334" rpy="0.0 -0.0 0.0"/>
+      <!-- <origin xyz="-0.0041019 0.0000721 -0.0183334" rpy="0.0 -0.0 0.0"/> -->
+      <origin xyz="0.0178508 0.0018366 -0.03525" rpy="0.0 -0.0 0.0"/>
       <!-- <mass value="1.3193189"/> -->
-      <mass value="2.0421872"/>
+      <!-- <mass value="2.0421872">/ -->
+      <mass value="1.8654999"/>
       <!-- <inertia ixx="0.0150906" ixy="-0.0000095" ixz="-0.0001112" iyy="0.0153469" iyz="-0.0000102" izz="0.0122100"/> -->
       <inertia
 	  ixx="0.0233589"
@@ -82,7 +84,8 @@
     <collision>
       <geometry>
         <!-- <mesh filename="package://gimbalrotor/urdf/grape/meshes/main_body.stl"/> -->
-        <box size="0.25 0.25 0.035"/>
+        <!-- <box size="0.25 0.25 0.035"/> -->
+	<box size="0.5 0.5 0.035"/>
       </geometry>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
     </collision>
@@ -91,7 +94,8 @@
   <link name="gimbal1_link">
     <inertial>
       <origin xyz="0.0097185 -0.0000023 0.0115030" rpy="0.0 -0.0 0.0"/>
-      <mass value="0.2647482"/>
+      <!-- <mass value="0.2647482"/> -->
+      <mass value="0.308825311849623"/>
       <inertia ixx="0.0004342" ixy="0.0000000" ixz="-0.0000960" iyy="0.0005399" iyz="0.0000000" izz="0.0001644"/>
     </inertial>
     <visual>
@@ -122,7 +126,8 @@
   <link name="gimbal2_link">
     <inertial>
       <origin xyz="0.0097185 -0.0000023 0.0115030" rpy="0.0 -0.0 0.0"/>
-      <mass value="0.2647482"/>
+      <!-- <mass value="0.2647482"/> -->
+      <mass value="0.308825311849623"/>
       <inertia ixx="0.0004342" ixy="0.0000000" ixz="-0.0000960" iyy="0.0005399" iyz="0.0000000" izz="0.0001644"/>
     </inertial>
     <visual>
@@ -153,7 +158,8 @@
   <link name="gimbal3_link">
     <inertial>
       <origin xyz="0.0097185 -0.0000023 0.0115030" rpy="0.0 -0.0 0.0"/>
-      <mass value="0.2647482"/>
+      <!-- <mass value="0.2647482"/> -->
+      <mass value="0.308825311849623"/>
       <inertia ixx="0.0004342" ixy="0.0000000" ixz="-0.0000960" iyy="0.0005399" iyz="0.0000000" izz="0.0001644"/>
     </inertial>
     <visual>
@@ -184,7 +190,8 @@
   <link name="gimbal4_link">
     <inertial>
       <origin xyz="0.0097185 -0.0000023 0.0115030" rpy="0.0 -0.0 0.0"/>
-      <mass value="0.2647482"/>
+      <!-- <mass value="0.2647482"/> -->
+      <mass value="0.308825311849623"/>
       <inertia ixx="0.0004342" ixy="0.0000000" ixz="-0.0000960" iyy="0.0005399" iyz="0.0000000" izz="0.0001644"/>
     </inertial>
     <visual>
@@ -449,5 +456,5 @@
 
   <!-- Include the arm macro -->
   <xacro:arm parent_link="main_body"/>
-
+  
 </robot>
