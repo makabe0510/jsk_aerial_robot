@@ -7,7 +7,7 @@
   <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/xacro/screw_drive_module_dynamixel.xacro"/>
   <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/xacro/vial_pick_module.xacro"/>
 
-  <xacro:macro name="arm" params="parent_link:=main_body xyz:='0.0995 0.0 -0.046' rpy:='3.141592653589793 1.5707926535897934 3.141592653589793'">
+  <xacro:macro name="arm" params="parent_link:=main_body xyz:='0.0995 0.0 -0.0465' rpy:='3.141592653589793 1.5707926535897934 3.141592653589793'">
     <!-- Dummy link to attach the arm to the main body -->
     <link name="arm_dummy_link"/>
     <joint name="arm_dummy_joint" type="fixed">

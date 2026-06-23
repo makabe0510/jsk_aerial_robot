@@ -2,7 +2,7 @@
 <robot name="gimbalrotor" xmlns:xacro="http://www.ros.org/wiki/xacro">  
 
   <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/common.xacro"/>
-  <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/xacro/arm.xacro"/>
+  <!-- <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/xacro/arm.xacro"/> -->
 
   <!-- <link name="root"> -->
   <!--   <inertial> -->
@@ -258,7 +258,7 @@
   <!-- </joint> -->
 
   <joint name="gimbal1" type="revolute">
-    <limit effort="5.0" velocity="10.0" lower="-3.14" upper="3.14"/>
+    <limit effort="1.5" velocity="6.39" lower="-3.14" upper="3.14"/>
     <parent link="main_body"/>
     <child link="gimbal1_link"/>
     <axis xyz="1. 0. 0."/>
@@ -274,7 +274,7 @@
   </joint>
 
   <joint name="gimbal2" type="revolute">
-    <limit effort="5.0" velocity="10.0" lower="-3.14" upper="3.14"/>
+    <limit effort="1.5" velocity="6.39" lower="-3.14" upper="3.14"/>
     <parent link="main_body"/>
     <child link="gimbal2_link"/>
     <axis xyz="1. 0. 0."/>
@@ -290,7 +290,7 @@
   </joint>
 
   <joint name="gimbal3" type="revolute">
-    <limit effort="5.0" velocity="10.0" lower="-3.14" upper="3.14"/>
+    <limit effort="1.5" velocity="6.39" lower="-3.14" upper="3.14"/>
     <parent link="main_body"/>
     <child link="gimbal3_link"/>
     <axis xyz="1. 0. 0."/>
@@ -306,7 +306,7 @@
   </joint>
 
   <joint name="gimbal4" type="revolute">
-    <limit effort="5.0" velocity="10.0" lower="-3.14" upper="3.14"/>
+    <limit effort="1.5" velocity="6.39" lower="-3.14" upper="3.14"/>
     <parent link="main_body"/>
     <child link="gimbal4_link"/>
     <axis xyz="1. 0. 0."/>
@@ -440,6 +440,7 @@
   <!-- <link name="battery"> -->
   <!--   <inertial> -->
   <!--     <origin xyz="0 0 0" rpy="0 0 0"/> -->
+  <!--     <mass value="0.0001"/> -->
   <!--     <mass value="1.1"/> -->
   <!--     <inertia -->
   <!--         ixx="0.0012" ixy="0.0" ixz="0.0" -->
@@ -454,7 +455,7 @@
   <!--   <origin xyz="0 0 -0.08" rpy="3.14159 0 0"/> -->
   <!-- </joint> -->
 
-  <!-- Include the arm macro -->
-  <xacro:arm parent_link="main_body"/>
+  <!-- <!-\- Include the arm macro -\-> -->
+  <!-- <xacro:arm parent_link="main_body"/> -->
   
 </robot>
