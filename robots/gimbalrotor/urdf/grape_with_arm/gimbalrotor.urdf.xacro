@@ -2,7 +2,7 @@
 <robot name="gimbalrotor" xmlns:xacro="http://www.ros.org/wiki/xacro">  
 
   <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/common.xacro"/>
-  <!-- <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/xacro/arm.xacro"/> -->
+  <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/xacro/arm.xacro"/>
 
   <!-- <link name="root"> -->
   <!--   <inertial> -->
@@ -455,7 +455,7 @@
   <!--   <origin xyz="0 0 -0.08" rpy="3.14159 0 0"/> -->
   <!-- </joint> -->
 
-  <!-- <!-\- Include the arm macro -\-> -->
-  <!-- <xacro:arm parent_link="main_body"/> -->
+  <!-- Include the arm macro -->
+  <xacro:arm parent_link="main_body"/>
   
 </robot>
