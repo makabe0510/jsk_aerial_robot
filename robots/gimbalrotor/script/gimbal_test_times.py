@@ -31,3 +31,9 @@ for _ in range(test_times):
         pub.publish(msg)
         rospy.loginfo(f"Published: {value}")
         time.sleep(1.0)
+    msg.position = [0, 0, 0, 0]
+    msg.header.stamp = rospy.Time.now()
+    pub.publish(msg)
+    rospy.loginfo(f"Published: {value}")
+    time.sleep(1.0)
+
