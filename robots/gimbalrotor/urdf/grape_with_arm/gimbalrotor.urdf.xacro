@@ -2,6 +2,7 @@
 <robot name="gimbalrotor" xmlns:xacro="http://www.ros.org/wiki/xacro">  
 
   <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/common.xacro"/>
+  <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/xacro/gimbal_inertial.xacro"/>
   <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/xacro/arm.xacro"/>
 
   <!-- <link name="root"> -->
@@ -92,12 +93,7 @@
   </link>
 
   <link name="gimbal1_link">
-    <inertial>
-      <origin xyz="0.0097185 -0.0000023 0.0115030" rpy="0.0 -0.0 0.0"/>
-      <!-- <mass value="0.2647482"/> -->
-      <mass value="0.308825311849623"/>
-      <inertia ixx="0.0004342" ixy="0.0000000" ixz="-0.0000960" iyy="0.0005399" iyz="0.0000000" izz="0.0001644"/>
-    </inertial>
+    <xacro:gimbal_module_inertial/>
     <visual>
       <geometry>
         <mesh filename="package://gimbalrotor/urdf/grape/meshes/gimbal1_link.stl"/>
@@ -124,12 +120,7 @@
   </link>
 
   <link name="gimbal2_link">
-    <inertial>
-      <origin xyz="0.0097185 -0.0000023 0.0115030" rpy="0.0 -0.0 0.0"/>
-      <!-- <mass value="0.2647482"/> -->
-      <mass value="0.308825311849623"/>
-      <inertia ixx="0.0004342" ixy="0.0000000" ixz="-0.0000960" iyy="0.0005399" iyz="0.0000000" izz="0.0001644"/>
-    </inertial>
+    <xacro:gimbal_module_inertial/>
     <visual>
       <geometry>
         <mesh filename="package://gimbalrotor/urdf/grape/meshes/gimbal2_link.stl"/>
@@ -156,12 +147,7 @@
   </link>
 
   <link name="gimbal3_link">
-    <inertial>
-      <origin xyz="0.0097185 -0.0000023 0.0115030" rpy="0.0 -0.0 0.0"/>
-      <!-- <mass value="0.2647482"/> -->
-      <mass value="0.308825311849623"/>
-      <inertia ixx="0.0004342" ixy="0.0000000" ixz="-0.0000960" iyy="0.0005399" iyz="0.0000000" izz="0.0001644"/>
-    </inertial>
+    <xacro:gimbal_module_inertial/>
     <visual>
       <geometry>
         <mesh filename="package://gimbalrotor/urdf/grape/meshes/gimbal3_link.stl"/>
@@ -188,12 +174,7 @@
   </link>
 
   <link name="gimbal4_link">
-    <inertial>
-      <origin xyz="0.0097185 -0.0000023 0.0115030" rpy="0.0 -0.0 0.0"/>
-      <!-- <mass value="0.2647482"/> -->
-      <mass value="0.308825311849623"/>
-      <inertia ixx="0.0004342" ixy="0.0000000" ixz="-0.0000960" iyy="0.0005399" iyz="0.0000000" izz="0.0001644"/>
-    </inertial>
+    <xacro:gimbal_module_inertial/>
     <visual>
       <geometry>
         <mesh filename="package://gimbalrotor/urdf/grape/meshes/gimbal4_link.stl"/>
