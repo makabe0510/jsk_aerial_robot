@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <robot name="gimbalrotor" xmlns:xacro="http://www.ros.org/wiki/xacro">  
 
+  <xacro:arg name="with_arm" default="true"/>
   <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/common.xacro"/>
   <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/xacro/gimbal_inertial.xacro"/>
   <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/xacro/arm.xacro"/>
@@ -437,6 +438,8 @@
   <!-- </joint> -->
 
   <!-- Include the arm macro -->
-  <xacro:arm parent_link="main_body"/>
+  <xacro:if value="$(arg with_arm)">
+    <xacro:arm parent_link="main_body"/>
+  </xacro:if>
   
 </robot>
