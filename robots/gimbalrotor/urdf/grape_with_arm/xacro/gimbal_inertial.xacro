@@ -13,8 +13,8 @@
                   ixx=0.0004342, ixy=0.0, ixz=-0.0000960, iyy=0.0005399, iyz=0.0, izz=0.0001644),
     guard=dict(mass=0.3863600, xyz='0.0084597 -0.0000016 0.0097037',
                ixx=0.0016361, ixy=0.0, ixz=0.0001121, iyy=0.0019861, iyz=0.0, izz=0.0025654),
-    guard_reinforced=dict(mass=0.4859987, xyz='0.0064760 -0.0000013 0.0183024',
-                          ixx=0.0036076, ixy=0.0, ixz=0.0001445, iyy=0.0039742, iyz=0.0, izz=0.0061800))}"/>
+    guard_reinforced=dict(mass=0.5050447, xyz='0.0062318 -0.0000012 0.0217146',
+                          ixx=0.0038561, ixy=0.0, ixz=0.0001552, iyy=0.0042235, iyz=0.0, izz=0.0064135))}"/>
 
   <xacro:macro name="gimbal_module_inertial" params="">
     <xacro:property name="selected" value="${gimbal_mass_presets['$(arg gimbal_mass_variant)']}"/>
