@@ -21,6 +21,7 @@
   <arg name="robot_id" default="" />
   <arg name="robot_ns" value="gimbalrotor$(arg robot_id)" />
   <arg name="airframe" default="quad" />
+  <arg name="gimbal_mass_variant" default="guard_reinforced" doc="original, guard, or guard_reinforced (grape_with_arm)" />
   <!-- motor (ESC, motor, propeller) configuration: depends on the airframe -->
   <arg name="motor_info" default="$(eval arg('config_dir') + ('/MotorInfo_f55apro2_at2814kv900_90453.yaml' if arg('airframe') == 'quad_with_dual_arm' else '/MotorInfo.yaml'))" />
 
@@ -73,6 +74,7 @@
   <include file="$(find aerial_robot_model)/launch/aerial_robot_model.launch" >
     <arg name="headless" value="$(arg headless)" />
     <arg name="robot_model" value="$(find gimbalrotor)/robots/$(arg airframe)/gimbalrotor.$(arg description_mode).xacro"/>
+    <arg name="model_options" value="gimbal_mass_variant:=$(arg gimbal_mass_variant)" />
     <arg name="robot_ns" value="$(arg robot_ns)" />
     <arg name="rviz_config" value="$(arg config_dir)/rviz_config" />
     <arg name="rviz_init_pose" value="$(arg config_dir)/RvizInit.yaml" />
