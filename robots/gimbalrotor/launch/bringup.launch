@@ -23,6 +23,8 @@
   <arg name="airframe" default="quad" />
   <arg name="with_arm" default="true" doc="Include the arm for grape_with_arm" />
   <arg name="arm_variant" default="original" doc="original or compact (grape_with_arm)" />
+  <arg name="configuration" default="$(eval ('arm_5dof' if arg('arm_variant') == 'original' else 'arm_3dof' if arg('arm_variant') == 'compact' else arg('arm_variant')) if arg('with_arm') else 'no_arm')" doc="no_arm, arm_5dof, or arm_3dof (grape_with_arm)" />
+  <arg name="airframe_config_dir" value="$(eval arg('config_dir') + '/' + arg('airframe') + ('/' + arg('configuration') if arg('airframe') == 'grape_with_arm' else ''))" />
   <!-- Mass variants apply to airframe:=grape_with_arm. -->
   <arg name="gimbal_mass_variant" default="guard_reinforced" doc="original, guard, or guard_reinforced (grape_with_arm)" />
   <!-- motor (ESC, motor, propeller) configuration: depends on the airframe -->
@@ -45,19 +47,15 @@
    <rosparam file="$(arg motor_info)" command="load" />
 
    ###########  Servo Config  ###########
-   <rosparam file="$(arg config_dir)/$(arg airframe)/Servo.yaml" command="load" if="$(eval arg('airframe') != 'grape_with_arm' or (arg('with_arm') and arg('arm_variant') == 'original'))"/>
-   <rosparam file="$(arg config_dir)/grape_with_arm/Servo_compact_arm.yaml" command="load" if="$(eval arg('airframe') == 'grape_with_arm' and arg('with_arm') and arg('arm_variant') == 'compact')"/>
+   <rosparam file="$(arg airframe_config_dir)/Servo.yaml" command="load"/>
    <group ns="servo_controller/joints" clear_params="true" if="$(eval arg('airframe') == 'grape_with_arm')"/>
-   <group if="$(eval arg('airframe') == 'grape_with_arm' and not arg('with_arm'))">
-     <rosparam file="$(arg config_dir)/grape_with_arm/Servo_no_arm.yaml" command="load"/>
-   </group>
 
    ###########  Battery Config  ###########
    <rosparam file="$(arg config_dir)/Battery.yaml" command="load" />
 
    ###########  Control  ###########
-   <rosparam file="$(arg config_dir)/$(arg airframe)/GimbalrotorControl.yaml" command="load" unless="$(arg simulation)"/>
-   <rosparam file="$(arg config_dir)/$(arg airframe)/GimbalrotorControl_sim.yaml" command="load" if="$(arg simulation)"/>
+   <rosparam file="$(arg airframe_config_dir)/GimbalrotorControl.yaml" command="load" unless="$(arg simulation)"/>
+   <rosparam file="$(arg airframe_config_dir)/GimbalrotorControl_sim.yaml" command="load" if="$(arg simulation)"/>
 
    ###########  Sensor Fusion  ###########
    <rosparam file="$(arg config_dir)/StateEstimation.yaml" command="load" />
@@ -82,7 +80,7 @@
   <include file="$(find aerial_robot_model)/launch/aerial_robot_model.launch" >
     <arg name="headless" value="$(arg headless)" />
     <arg name="robot_model" value="$(find gimbalrotor)/robots/$(arg airframe)/gimbalrotor.$(arg description_mode).xacro"/>
-    <arg name="model_options" value="gimbal_mass_variant:=$(arg gimbal_mass_variant) with_arm:=$(arg with_arm) arm_variant:=$(arg arm_variant)"/>
+    <arg name="model_options" value="gimbal_mass_variant:=$(arg gimbal_mass_variant) configuration:=$(arg configuration)"/>
     <arg name="robot_ns" value="$(arg robot_ns)" />
     <arg name="rviz_config" value="$(arg config_dir)/rviz_config" />
     <arg name="rviz_init_pose" value="$(arg config_dir)/RvizInit.yaml" />

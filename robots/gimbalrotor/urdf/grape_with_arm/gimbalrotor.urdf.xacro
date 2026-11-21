@@ -3,9 +3,9 @@
 
   <xacro:arg name="with_arm" default="true"/>
   <xacro:arg name="arm_variant" default="original"/>
+  <xacro:arg name="configuration" default=""/>
   <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/common.xacro"/>
   <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/xacro/gimbal_inertial.xacro"/>
-  <xacro:include filename="$(find gimbalrotor)/urdf/grape_with_arm/xacro/arm.xacro"/>
 
   <!-- <link name="root"> -->
   <!--   <inertial> -->
@@ -439,11 +439,11 @@
   <!--   <origin xyz="0 0 -0.08" rpy="3.14159 0 0"/> -->
   <!-- </joint> -->
 
+  <xacro:property name="configuration" value="$(arg configuration)"/>
+  <xacro:property name="with_arm" value="$(arg with_arm)"/>
   <xacro:property name="arm_variant" value="$(arg arm_variant)"/>
-
-  <!-- Include the arm macro -->
-  <xacro:if value="$(arg with_arm)">
-    <xacro:arm parent_link="main_body" legacy="${dict(original=True, compact=False)[arm_variant]}"/>
-  </xacro:if>
+  <xacro:property name="selected_configuration"
+                  value="${configuration or (dict(original='arm_5dof', compact='arm_3dof')[arm_variant] if with_arm else 'no_arm')}"/>
+  <xacro:include filename="configurations/${selected_configuration}/model.xacro"/>
 
 </robot>
