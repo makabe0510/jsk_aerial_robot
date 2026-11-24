@@ -39,8 +39,13 @@ install(DIRECTORY config plugins launch robots urdf
   )
 
 catkin_install_python(PROGRAMS
+  scripts/arm_motion_test.py
   scripts/gimbal_test.py
   scripts/gimbal_test_times.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+  )
+
+install(PROGRAMS scripts/rosbag_record.sh
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
   )
 
