@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Move each Grape arm joint in turn and check its measured position."""
+"""Sweep each Grape arm joint through its allowed range, then return all axes to zero."""
 
 import math
 import time
@@ -72,26 +72,33 @@ def command_and_check(publisher, topic, name, target, bounds, move_time, timeout
     raise RuntimeError(f"{name} did not reach {target:.3f} rad within {timeout:g} s ({actual})")
 
 
-def main():
-    rospy.init_node("arm_motion_test")
-    dof = rospy.get_param("~dof", 3)
-    if dof not in (3, 5):
-        raise ValueError("~dof must be 3 or 5")
+def main(gripper_only=False):
+    rospy.init_node("gripper_motion_test" if gripper_only else "arm_motion_test")
     timeout = float(rospy.get_param("~timeout", 8.0))
     tolerance = float(rospy.get_param("~tolerance", 0.08))
     move_time = float(rospy.get_param("~move_time", 2.0))
-    full_range = rospy.get_param("~full_range", False)
+    full_range = rospy.get_param("~full_range", True)
     if not all(math.isfinite(value) and value > 0 for value in (timeout, tolerance, move_time)):
         raise ValueError("~timeout, ~tolerance, and ~move_time must be positive and finite")
 
     namespace = rospy.get_param("~robot_ns", "/gimbalrotor").rstrip("/")
     topic = namespace + "/joint_states"
-    names = ARM_JOINTS[-dof:]
     model = ET.fromstring(rospy.get_param(namespace + "/robot_description"))
     joints = {joint.get("name"): joint for joint in model.findall("joint")
               if joint.get("name") in ARM_JOINTS and joint.get("type") in ("revolute", "continuous")}
+    dof = rospy.get_param("~dof", len(joints))
+    if dof not in (3, 5):
+        raise ValueError(f"Expected a 3DoF or 5DoF Grape arm, found {len(joints)} joints (requested {dof})")
+    names = ARM_JOINTS[-dof:]
     if joints.keys() != set(names):
         raise RuntimeError(f"Expected {dof} arm joints, found {', '.join(sorted(joints)) or 'none'}")
+    if gripper_only:
+        names = (ARM_JOINTS[-1],)
+
+    limits = {name: joint_bounds(model, joints[name]) for name in names}
+    for name, (lower, upper) in limits.items():
+        if not lower <= 0.0 <= upper:
+            raise ValueError(f"Zero is outside the allowed range for {name}: [{lower}, {upper}]")
 
     publisher = rospy.Publisher(namespace + "/joints_ctrl", JointState, queue_size=1)
     deadline = time.monotonic() + timeout
@@ -104,7 +111,7 @@ def main():
     incomplete = []
     for name in names:
         initial, = read_positions(topic, [name], timeout)
-        bounds = joint_bounds(model, joints[name])
+        bounds = limits[name]
         lower, upper = bounds
         if not lower <= initial <= upper:
             rospy.logwarn("Skipping %s: measured %.3f rad, allowed [%.3f, %.3f] rad",
@@ -141,14 +148,20 @@ def main():
         command_and_check(publisher, topic, name, initial, bounds, move_time, timeout, tolerance)
     if incomplete:
         raise RuntimeError(f"Motion test incomplete. Skipped: {', '.join(incomplete)}")
-    rospy.loginfo("%d arm axes reached their test positions and returned to their initial positions", dof)
+    for name in names:
+        command_and_check(publisher, topic, name, 0.0, limits[name], move_time, timeout, tolerance)
+    rospy.loginfo("%d tested axes reached their test positions and returned to zero", len(names))
 
 
-if __name__ == "__main__":
+def run(gripper_only=False):
     try:
-        main()
+        main(gripper_only)
     except rospy.ROSInterruptException:
         pass
     except (RuntimeError, rospy.ROSException, ValueError, KeyError) as error:
         rospy.logerr("%s", error)
         raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    run()

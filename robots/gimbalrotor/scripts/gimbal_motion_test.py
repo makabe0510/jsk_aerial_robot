@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 from sensor_msgs.msg import JointState
 import time
 
-rospy.init_node("gimbal_test_sequence")
+rospy.init_node("gimbal_motion_test")
 
 pub = rospy.Publisher("/gimbalrotor/gimbals_ctrl", JointState, queue_size=1)
 
@@ -19,7 +19,7 @@ msg = JointState()
 msg.name = ["gimbal1", "gimbal2", "gimbal3", "gimbal4"]
 
 # 繰り返すシーケンス
-sequence = [0.0, -0.35, 0.0, 0.35]
+sequence = [0.0, -0.7, 0.0, 0.7]
 
 # publisher安定待ち
 time.sleep(0.5)
@@ -31,3 +31,8 @@ for _ in range(test_times):
         pub.publish(msg)
         rospy.loginfo(f"Published: {value}")
         time.sleep(1.0)
+    msg.position = [0, 0, 0, 0]
+    msg.header.stamp = rospy.Time.now()
+    pub.publish(msg)
+    rospy.loginfo("Published: 0.0")
+    time.sleep(1.0)

@@ -40,8 +40,9 @@ install(DIRECTORY config plugins launch robots urdf
 
 catkin_install_python(PROGRAMS
   scripts/arm_motion_test.py
-  scripts/gimbal_test.py
-  scripts/gimbal_test_times.py
+  scripts/gripper_motion_test.py
+  scripts/gimbal_return_to_zero.py
+  scripts/gimbal_motion_test.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
   )
 
